@@ -13,7 +13,7 @@ app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => res.json({ message: "Welcome to  application." }));
+app.get("/", (_req, res) => res.json({ message: "Welcome to my API." }));
 
 app.use("/api/users", user);
 app.use("/api/products", product);
