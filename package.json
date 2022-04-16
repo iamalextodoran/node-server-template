@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "api w/ sequelize and pg",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon app.js --trace-warnings"
+    "start": "nodemon server.js --trace-warnings"
   },
   "keywords": [],
   "author": "",

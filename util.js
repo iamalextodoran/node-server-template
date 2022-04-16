@@ -1,7 +1,9 @@
 const jwt = require("jsonwebtoken");
 
+const SECRET = process.env.SECRET || "secret";
+
 module.exports = {
-  getToken: (user) => jwt.sign({ ...user }, "secret", { expiresIn: "24h" }),
+  getToken: (user) => jwt.sign({ ...user }, SECRET, { expiresIn: "24h" }),
 
   isAuth: (req, res, next) => {
     const token = req.headers.authorization;
@@ -9,7 +11,7 @@ module.exports = {
     if (token) {
       const onlyToken = token.slice(7, token.length);
 
-      jwt.verify(onlyToken, "secret", (err, decode) => {
+      jwt.verify(onlyToken, SECRET, (err, decode) => {
         if (err) return res.status(401).send({ msg: "Invalid Token" });
 
         req.user = decode;
