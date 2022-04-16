@@ -1,18 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-  getToken: (user) => {
-    return jwt.sign(
-      {
-        _id: user._id,
-        email: user.email,
-      },
-      "secret",
-      {
-        expiresIn: "24h",
-      }
-    );
-  },
+  getToken: (user) => jwt.sign({ ...user }, "secret", { expiresIn: "24h" }),
 
   isAuth: (req, res, next) => {
     const token = req.headers.authorization;
