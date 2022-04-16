@@ -1,22 +1,27 @@
 "use strict";
 
+const users = [
+  {
+    firstName: "John",
+    lastName: "Doe",
+    email: "admin@asd.io",
+    password: "password",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+];
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    console.log(Sequelize);
-    await queryInterface.bulkInsert(
+    const user = await queryInterface.rawSelect(
       "Users",
-      [
-        {
-          firstName: "John",
-          lastName: "Doe",
-          email: "example@example.com",
-          password: "password",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-      {}
+      { where: { email: users[0].email } },
+      ["id"]
     );
+
+    if (!user) {
+      await queryInterface.bulkInsert("Users", users, {});
+    }
   },
 
   down: async (queryInterface, Sequelize) => {
