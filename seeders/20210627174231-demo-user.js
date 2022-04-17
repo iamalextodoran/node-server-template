@@ -1,11 +1,16 @@
 "use strict";
 
+const bcrypt = require("bcrypt");
+
+const salt = bcrypt.genSaltSync(10, "a");
+const hashedPassword = bcrypt.hashSync("password", salt);
+
 const users = [
   {
     firstName: "John",
     lastName: "Doe",
     email: "admin@asd.io",
-    password: "password",
+    password: hashedPassword,
     createdAt: new Date(),
     updatedAt: new Date(),
   },
