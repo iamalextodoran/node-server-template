@@ -2,8 +2,6 @@ const User = require("../models").User;
 
 const bcrypt = require("bcrypt");
 
-const { isAuth } = require("../util");
-
 const { userSerializer } = require("../serializers");
 
 module.exports = {
@@ -30,12 +28,10 @@ module.exports = {
           }
         });
       })
-      .catch((err) => res.status(400).json({ err }));
+      .catch((err) => res.status(401).json({ msg: "Invalid credentials" }));
   },
 
   logOut: (req, res) => {
-    const next = () => res.status(200).json({ msg: "Logged out" });
-
-    isAuth(req, res, next);
+    res.status(200).json({ msg: "Logged out" });
   },
 };
