@@ -14,8 +14,27 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
+      category: {
+        type: Sequelize.STRING,
+      },
+      favorite: {
+        defaultValue: false,
+        type: Sequelize.BOOLEAN,
+      },
       price: {
         type: Sequelize.INTEGER,
+      },
+      colors: {
+        defaultValue: [],
+        type: Sequelize.ARRAY(Sequelize.TEXT),
+      },
+      pictures: {
+        default: [],
+        type: Sequelize.ARRAY(Sequelize.TEXT),
+      },
+      sizes: {
+        default: [],
+        type: Sequelize.ARRAY(Sequelize.INTEGER),
       },
       createdAt: {
         allowNull: false,
