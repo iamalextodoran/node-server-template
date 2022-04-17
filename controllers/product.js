@@ -24,16 +24,20 @@ module.exports = {
   },
 
   getProducts: (req, res) => {
-    const favorite = req.query.favorite;
-
-    Product.findAll(favorite ? { where: { favorite } } : {})
+    Product.findAll()
       .then((products) => res.status(200).json({ products }))
       .catch((err) => res.status(400).json({ err }));
   },
 
   getProduct: (req, res) => {
+    if (!req.params.id) res.status(400).json({ msg: "No product id" });
+
     Product.findByPk(req.params.id)
-      .then((product) => res.status(200).json({ product }))
+      .then((product) =>
+        product
+          ? res.status(200).json({ product })
+          : res.status(404).json({ msg: "No product with this id" })
+      )
       .catch((err) => res.status(400).json({ err }));
   },
 };
