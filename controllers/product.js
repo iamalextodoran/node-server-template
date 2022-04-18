@@ -1,5 +1,7 @@
 import { isAuth } from "../util.js";
-import Product from "../models/product.js";
+import models from "../models/index.js";
+
+const Product = models.Product;
 
 const createProduct = (req, res) => {
   const { name, description, price, category, colors, sizes, pictures } =

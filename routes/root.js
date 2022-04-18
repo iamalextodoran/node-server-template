@@ -1,7 +1,8 @@
-import express from "express";
+import { Router } from "express";
+
 import { getRoot } from "../controllers/root.js";
 
-const router = express.Router();
+const router = Router();
 
 router.get("/", getRoot);
 

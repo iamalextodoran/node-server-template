@@ -1,5 +1,4 @@
 import { getToken } from "../util.js";
-
 import models from "../models/index.js";
 
 const User = models.User;

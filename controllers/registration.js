@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
 
-import User from "../models/user.js";
-import { userSerializer } from "../serializers";
+import models from "../models/index.js";
+import { userSerializer } from "../serializers/index.js";
+
+const User = models.User;
 
 const register = (req, res) => {
   const { firstName, lastName, email, password } = req.body;

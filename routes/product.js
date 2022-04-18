@@ -1,5 +1,4 @@
-import express from "express";
-const router = express.Router();
+import { Router } from "express";
 
 import {
   getProducts,
@@ -7,6 +6,8 @@ import {
   createProduct,
   deleteProduct,
 } from "../controllers/product.js";
+
+const router = Router();
 
 router.get("/", getProducts);
 router.get("/:id", getProduct);
