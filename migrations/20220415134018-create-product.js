@@ -34,7 +34,7 @@ module.exports = {
       },
       sizes: {
         default: [],
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
+        type: Sequelize.ARRAY(Sequelize.TEXT),
       },
       createdAt: {
         allowNull: false,
