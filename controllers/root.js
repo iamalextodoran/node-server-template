@@ -1,6 +1,8 @@
 import { getToken } from "../util.js";
 
-import User from "../models/user.js";
+import models from "../models/index.js";
+
+const User = models.User;
 
 const getRoot = (_req, res) => {
   User.findByPk(1)

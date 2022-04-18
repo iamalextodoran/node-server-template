@@ -5,7 +5,7 @@ import express from "express";
 
 import root from "./routes/root.js";
 // import user from "./routes/user.js";
-import product from "./routes/product.js";
+// import product from "./routes/product.js";
 // import registration from "./routes/registration.js";
 
 const app = express();
@@ -19,10 +19,10 @@ app.use(express.json());
 
 app.use("/", root);
 // app.use("/api/users", user);
-app.use("/api/products", product);
+// app.use("/api/products", product);
 // app.use("/api/registration", registration);
 
 app.listen(PORT, () => {
-  console.clear();
+  // console.clear();
   console.log(`Server is running on port ${PORT}! 🚀🚀🚀`);
 });
