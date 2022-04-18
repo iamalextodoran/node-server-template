@@ -40,4 +40,19 @@ module.exports = {
       )
       .catch((err) => res.status(400).json({ err }));
   },
+
+  deleteProduct: (req, res) => {
+    if (!req.params.id) res.status(400).json({ msg: "No product id" });
+
+    const next = () =>
+      Product.destroy({ where: { id: req.params.id } })
+        .then((product) =>
+          product
+            ? res.status(200).json({ product })
+            : res.status(404).json({ msg: "No product with this id" })
+        )
+        .catch((err) => res.status(400).json({ err }));
+
+    isAuth(req, res, next);
+  },
 };
