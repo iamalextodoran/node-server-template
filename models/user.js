@@ -1,9 +1,8 @@
-"use strict";
-const { Model } = require("sequelize");
+import { Model } from "sequelize";
 
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
 
-module.exports = (sequelize, DataTypes) => {
+const User = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       // define association here
@@ -41,3 +40,5 @@ module.exports = (sequelize, DataTypes) => {
 
   return User;
 };
+
+export default User;

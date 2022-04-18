@@ -1,6 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "api w/ sequelize and pg",
   "main": "server.js",
   "scripts": {

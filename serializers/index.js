@@ -1,4 +1,4 @@
-const { getToken } = require("../util");
+import { getToken } from "../util.js";
 
 const userSerializer = (data) => {
   const destructured = (object) => {
@@ -13,4 +13,4 @@ const userSerializer = (data) => {
   }
 };
 
-module.exports = { userSerializer };
+export { userSerializer };
