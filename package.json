@@ -5,12 +5,17 @@
   "description": "api w/ sequelize and pg",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js --trace-warnings"
+    "start": "nodemon --experimental-specifier-resolution=node server.js --trace-warnings",
+    "db": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.7",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",

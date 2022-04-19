@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     name: "Tricou nike men v neck",
     description: "Tricou nike barbati diverse modele la acelasi pret.",

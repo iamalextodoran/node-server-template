@@ -1,19 +1,26 @@
 import Sequelize from "sequelize";
+
+import config from "../config";
+
 import User from "./user.js";
 import Product from "./product.js";
 
-const config = {
-  database: "sequlizeApp",
-  host: "127.0.0.1",
-  dialect: "postgres",
-};
+const env = process.env.NODE_ENV || "development";
+const settings = config[env];
 
 const sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
+  settings.database,
+  settings.username,
+  settings.password,
+  settings
 );
+
+try {
+  await sequelize.authenticate();
+  console.log("Connection has been established successfully.");
+} catch (error) {
+  console.error("Unable to connect to the database:", error);
+}
 
 const models = {
   User: User(sequelize, Sequelize),
