@@ -1,12 +1,11 @@
 import Sequelize from "sequelize";
 
-import config from "../config";
-
 import User from "./user.js";
 import Product from "./product.js";
 
-const env = process.env.NODE_ENV || "development";
-const settings = config[env];
+import config from "../config/index.js";
+
+const settings = config[process.env.NODE_ENV];
 
 const sequelize = new Sequelize(
   settings.database,

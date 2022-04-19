@@ -5,7 +5,7 @@
   "description": "api w/ sequelize and pg",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --experimental-specifier-resolution=node server.js --trace-warnings",
+    "start": "env-cmd -f .env nodemon server.js --trace-warnings",
     "db": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
+    "env-cmd": "10.1.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
