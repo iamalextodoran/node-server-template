@@ -1,16 +1,26 @@
-const express = require("express");
-const router = express.Router();
+import multer from "multer";
 
-const {
+import { Router } from "express";
+
+import {
   getProducts,
   getProduct,
   createProduct,
   deleteProduct,
-} = require("../controllers/product");
+} from "../controllers/product.js";
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, "uploads"),
+  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
+});
+
+const upload = multer({ storage });
+
+const router = Router();
 
 router.get("/", getProducts);
 router.get("/:id", getProduct);
-router.post("/", createProduct);
+router.post("/", upload.array("image"), createProduct);
 router.delete("/:id", deleteProduct);
 
-module.exports = router;
+export default router;

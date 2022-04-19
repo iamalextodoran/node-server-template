@@ -1,16 +1,17 @@
-const { getToken } = require("../util");
+import { getToken } from "../util.js";
+import models from "../models/index.js";
 
-const User = require("../models").User;
+const User = models.User;
 
-module.exports = {
-  getRoot: (_req, res) => {
-    User.findByPk(1)
-      .then((user) =>
-        res.status(200).json({
-          message: "Welcome to my API! 🚀",
-          bearerToken: getToken(user),
-        })
-      )
-      .catch((err) => res.status(400).json({ err }));
-  },
+const getRoot = (_req, res) => {
+  User.findByPk(1)
+    .then((user) =>
+      res.status(200).json({
+        message: "Welcome to my API! 🚀",
+        bearerToken: getToken(user),
+      })
+    )
+    .catch((err) => res.status(400).json({ err }));
 };
+
+export { getRoot };
