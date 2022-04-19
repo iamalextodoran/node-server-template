@@ -4,23 +4,27 @@ import models from "../models/index.js";
 const Product = models.Product;
 
 const createProduct = (req, res) => {
-  const { name, description, price, category, colors, sizes, pictures } =
-    req.body;
+  const { name, description, price, category, colors, sizes } = req.body;
 
-  const next = () =>
-    Product.create({
-      name,
-      description,
-      price,
-      category,
-      colors,
-      sizes,
-      pictures,
-    })
-      .then((product) => res.status(201).json({ product }))
-      .catch((err) => res.status(400).json({ err }));
+  const pictures = req.files.map(
+    ({ destination, filename }) =>
+      process.env.SERVER + destination + "/" + filename
+  );
 
-  isAuth(req, res, next);
+  // const next = () =>
+  Product.create({
+    name,
+    description,
+    price,
+    category,
+    colors,
+    sizes,
+    pictures,
+  })
+    .then((product) => res.status(201).json({ product }))
+    .catch((err) => res.status(400).json({ err }));
+
+  // isAuth(req, res, next);
 };
 
 const getProducts = (req, res) => {

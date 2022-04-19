@@ -22,6 +22,8 @@ app.use("/api/users", user);
 app.use("/api/products", product);
 app.use("/api/registration", registration);
 
+app.use("*/uploads", express.static("uploads"));
+
 app.listen(PORT, () => {
   console.clear();
   console.log(`Server is running on port ${PORT}! 🚀🚀🚀`);
