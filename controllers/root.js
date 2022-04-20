@@ -11,7 +11,7 @@ const getRoot = (_req, res) => {
         bearerToken: getToken(user),
       })
     )
-    .catch((err) => res.status(400).json({ err }));
+    .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };
 
 export { getRoot };

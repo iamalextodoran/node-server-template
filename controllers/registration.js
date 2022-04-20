@@ -10,7 +10,7 @@ const register = (req, res) => {
 
   User.create({ firstName, lastName, email, password })
     .then((user) => res.status(201).json(userSerializer(user)))
-    .catch((err) => res.status(400).json({ err }));
+    .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };
 
 const logIn = (req, res) => {
@@ -19,7 +19,7 @@ const logIn = (req, res) => {
   User.findOne({ where: { email } })
     .then((user) => {
       bcrypt.compare(password, user.password, (err, validPassword) => {
-        if (err) res.status(400).json({ err });
+        if (err) res.status(400).json({ err, msg: "Something's wrong!" });
 
         if (validPassword) {
           return res.status(200).json(userSerializer(user));
@@ -28,7 +28,7 @@ const logIn = (req, res) => {
         }
       });
     })
-    .catch((err) => res.status(401).json({ msg: "Invalid credentials" }));
+    .catch((err) => res.status(401).json({ err, msg: "Invalid credentials" }));
 };
 
 const logOut = (req, res) => {
