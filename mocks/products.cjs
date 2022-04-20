@@ -57,7 +57,7 @@ export default [
     description: "Tricou nike men tip polo.",
     category: "men",
     price: 149,
-    colors: ["white"],
+    colors: ["gray"],
     pictures: [
       "https://cdn.aboutstatic.com/file/d7330e5a77030d41bf508cd7329b13f9?bg=F4F4F5&quality=75&trim=1&height=1067&width=800",
       "https://cdn.aboutstatic.com/file/82febe6403b3dde00ef27fcd03dd6fb4?quality=75&height=1067&width=800",
