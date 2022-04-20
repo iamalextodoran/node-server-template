@@ -7,7 +7,7 @@ const users = [
   {
     firstName: "John",
     lastName: "Doe",
-    email: "admin@asd.io",
+    email: "john.doe@admin.com",
     password: hashedPassword,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -15,15 +15,7 @@ const users = [
 ];
 
 export const up = async (queryInterface, Sequelize) => {
-  const user = await queryInterface.rawSelect(
-    "Users",
-    { where: { email: users[0].email } },
-    ["id"]
-  );
-
-  if (!user) {
-    await queryInterface.bulkInsert("Users", users, {});
-  }
+  await queryInterface.bulkInsert("Users", users, {});
 };
 
 export const down = async (queryInterface, Sequelize) => {

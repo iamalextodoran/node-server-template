@@ -22,7 +22,7 @@ export default [
     description: "Tricou nike femei diverse modele la acelasi pret.",
     category: "men",
     price: 69,
-    colors: ["green"],
+    colors: ["blue"],
     pictures: [
       "https://cdn.aboutstatic.com/file/images/2471435f8088a59932657a969373d549.jpg?quality=75&height=1067&width=800",
       "https://cdn.aboutstatic.com/file/images/67b67312b411a4aeeb9aa83c0f194376.png?bg=F4F4F5&quality=75&trim=1&height=1067&width=800",
@@ -74,7 +74,7 @@ export default [
     description: "Ti-ar sta bine cu ea",
     category: "men",
     price: 349,
-    colors: ["green"],
+    colors: ["blue"],
     pictures: [
       "https://cdn.aboutstatic.com/file/images/70df07d3545a597eb000f9525a451fa4.png?bg=F4F4F5&quality=75&trim=1&height=1067&width=800",
       "https://cdn.aboutstatic.com/file/images/5bdb1d0aef46e6f30d4518d08097153f.jpg?quality=75&height=1067&width=800",
