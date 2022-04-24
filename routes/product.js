@@ -6,6 +6,7 @@ import {
   getProducts,
   getProduct,
   createProduct,
+  updateProduct,
   deleteProduct,
 } from "../controllers/product.js";
 
@@ -20,6 +21,7 @@ const router = Router();
 
 router.get("/", getProducts);
 router.get("/:id", getProduct);
+router.put("/:id", upload.array("image"), updateProduct);
 router.post("/", upload.array("image"), createProduct);
 router.delete("/:id", deleteProduct);
 
