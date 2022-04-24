@@ -18,7 +18,7 @@ const createProduct = (req, res) => {
       sizes,
       pictures,
     })
-      .then((product) => res.status(201).json({ product }))
+      .then((product) => res.status(201).json(product))
       .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 
   isAuth(req, res, next);
@@ -44,7 +44,7 @@ const updateProduct = (req, res) => {
             sizes,
             pictures: !!pictures.length ? pictures : product.pictures,
           })
-          .then((product) => res.status(202).json({ product }));
+          .then((product) => res.status(202).json(product));
       })
       .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 
@@ -53,7 +53,7 @@ const updateProduct = (req, res) => {
 
 const getProducts = (req, res) => {
   Product.findAll()
-    .then((products) => res.status(200).json({ products }))
+    .then((products) => res.status(200).json(products))
     .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };
 
@@ -63,7 +63,7 @@ const getProduct = (req, res) => {
   Product.findByPk(req.params.id)
     .then((product) => {
       if (product) {
-        res.status(200).json({ product });
+        res.status(200).json(product);
       } else {
         res.status(404).json({ msg: "No product with this id" });
       }
@@ -78,7 +78,7 @@ const deleteProduct = (req, res) => {
     Product.destroy({ where: { id: req.params.id } })
       .then((product) => {
         if (product) {
-          res.status(200).json({ product });
+          res.status(200).json(product);
         } else {
           res.status(404).json({ msg: "No product with this id" });
         }
