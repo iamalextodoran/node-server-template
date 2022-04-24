@@ -4,9 +4,8 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import root from "./routes/root.js";
-import user from "./routes/user.js";
 import product from "./routes/product.js";
-import registration from "./routes/registration.js";
+import session from "./routes/session.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,9 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", root);
-app.use("/api/users", user);
+app.use("/api/session", session);
 app.use("/api/products", product);
-app.use("/api/registration", registration);
 
 app.use("*/uploads", express.static("uploads"));
 

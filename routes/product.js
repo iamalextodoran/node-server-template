@@ -9,6 +9,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controllers/product.js";
+import { isAuth } from "../util.js";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads"),
@@ -21,8 +22,8 @@ const router = Router();
 
 router.get("/", getProducts);
 router.get("/:id", getProduct);
-router.put("/:id", upload.array("image"), updateProduct);
-router.post("/", upload.array("image"), createProduct);
-router.delete("/:id", deleteProduct);
+router.post("/", isAuth, upload.array("image"), createProduct);
+router.put("/:id", isAuth, upload.array("image"), updateProduct);
+router.delete("/:id", isAuth, deleteProduct);
 
 export default router;

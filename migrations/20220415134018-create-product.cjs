@@ -12,13 +12,6 @@ export const up = async (queryInterface, Sequelize) => {
     description: {
       type: Sequelize.STRING,
     },
-    category: {
-      type: Sequelize.STRING,
-    },
-    favorite: {
-      defaultValue: false,
-      type: Sequelize.BOOLEAN,
-    },
     price: {
       type: Sequelize.INTEGER,
     },

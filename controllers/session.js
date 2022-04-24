@@ -1,17 +1,9 @@
 import bcrypt from "bcrypt";
 
+import { getToken } from "../util.js";
 import models from "../models/index.js";
-import { userSerializer } from "../serializers/index.js";
 
 const User = models.User;
-
-const register = (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
-
-  User.create({ firstName, lastName, email, password })
-    .then((user) => res.status(201).json(userSerializer(user)))
-    .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
-};
 
 const logIn = (req, res) => {
   const { email, password } = req.body;
@@ -22,7 +14,7 @@ const logIn = (req, res) => {
         if (err) res.status(400).json({ err, msg: "Something's wrong!" });
 
         if (validPassword) {
-          return res.status(200).json(userSerializer(user));
+          return res.status(200).json({ user, token: getToken(user) });
         } else {
           return res.status(401).json({ msg: "Invalid credentials" });
         }
@@ -35,4 +27,4 @@ const logOut = (req, res) => {
   res.status(200).json({ msg: "Logged out" });
 };
 
-export { register, logIn, logOut };
+export { logIn, logOut };
