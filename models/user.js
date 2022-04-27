@@ -24,8 +24,8 @@ const User = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "User",
       timestamps: true,
+      modelName: "User",
       hooks: {
         beforeCreate: (record) => {
           if (record.password) {

@@ -15,8 +15,9 @@ const Product = (sequelize, DataTypes) => {
       sizes: DataTypes.ARRAY(DataTypes.TEXT),
     },
     {
-      timestamps: false,
       sequelize,
+      paranoid: true,
+      timestamps: false,
       modelName: "Product",
     }
   );

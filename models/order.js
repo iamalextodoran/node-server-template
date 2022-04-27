@@ -16,8 +16,9 @@ const Order = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
     },
     {
-      timestamps: false,
       sequelize,
+      paranoid: true,
+      timestamps: false,
       modelName: "Order",
     }
   );

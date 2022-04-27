@@ -12,8 +12,9 @@ const OrderItem = (sequelize, DataTypes) => {
       details: DataTypes.TEXT,
     },
     {
-      timestamps: false,
       sequelize,
+      paranoid: true,
+      timestamps: false,
       modelName: "OrderItem",
     }
   );

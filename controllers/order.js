@@ -30,9 +30,9 @@ const getOrder = (req, res) => {
 };
 
 const createOrder = (req, res) => {
-  const { OrderItems } = req.body;
+  const { firstName, lastName, email, address, phoneNumber } = req.body;
 
-  Order.create({ OrderItems })
+  Order.create({ firstName, lastName, email, address, phoneNumber })
     .then((order) => res.status(200).json(order))
     .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };
