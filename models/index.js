@@ -3,6 +3,7 @@ import Sequelize from "sequelize";
 import User from "./user.js";
 import Order from "./order.js";
 import Product from "./product.js";
+import OrderItem from "./orderItem.js";
 
 import config from "../config/index.js";
 
@@ -26,6 +27,7 @@ const models = {
   User: User(sequelize, Sequelize),
   Order: Order(sequelize, Sequelize),
   Product: Product(sequelize, Sequelize),
+  OrderItem: OrderItem(sequelize, Sequelize),
 };
 
 Object.values(models)

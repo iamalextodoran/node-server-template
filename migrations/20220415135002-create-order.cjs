@@ -6,9 +6,9 @@ export const up = async (queryInterface, Sequelize) => {
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    productId: {
+    orderItemId: {
       type: Sequelize.INTEGER,
-      references: { model: "Products", key: "id" },
+      references: { model: "OrderItems", key: "id" },
     },
     createdAt: {
       allowNull: false,
@@ -19,8 +19,6 @@ export const up = async (queryInterface, Sequelize) => {
       type: Sequelize.DATE,
     },
   });
-
-  await queryInterface.createTable("Orders", {});
 };
 
 export const down = async (queryInterface, Sequelize) => {

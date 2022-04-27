@@ -3,17 +3,17 @@ import { Model } from "sequelize";
 const Order = (sequelize, DataTypes) => {
   class Order extends Model {
     static associate(models) {
-      Order.hasMany(models.Product, { foreignKey: "id" });
+      Order.hasMany(models.OrderItem, { foreignKey: "id" });
     }
   }
 
   Order.init(
     {
-      productId: {
+      orderItemId: {
         type: DataTypes.INTEGER,
         references: {
           key: "id",
-          model: "Product",
+          model: "OrderItem",
         },
       },
     },
