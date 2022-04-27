@@ -30,6 +30,11 @@ export const up = async (queryInterface, Sequelize) => {
     "Orders",
     [
       {
+        phoneNumber: "DataTypes.STRING",
+        firstName: "DataTypes.STRING",
+        lastName: "DataTypes.STRING",
+        address: "DataTypes.TEXT",
+        email: "DataTypes.STRING",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

@@ -8,7 +8,13 @@ const Order = (sequelize, DataTypes) => {
   }
 
   Order.init(
-    {},
+    {
+      phoneNumber: DataTypes.STRING,
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.STRING,
+      address: DataTypes.TEXT,
+      email: DataTypes.STRING,
+    },
     {
       timestamps: false,
       sequelize,
