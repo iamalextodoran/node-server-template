@@ -20,17 +20,21 @@ const getOrders = (req, res) => {
 const getOrder = (req, res) => {
   const id = req.params.id;
 
-  Order.findOne({
+  OrderItem.findOne({
     where: { id },
-    include: {
-      model: OrderItem,
-      include: {
-        model: Product,
-      },
-    },
+    attributes: ["id"],
+    include: Product,
   })
     .then((order) => res.status(200).json(order))
     .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };
 
-export { getOrders, getOrder };
+const createOrder = (req, res) => {
+  const { OrderItems } = req.body;
+
+  Order.create({ OrderItems })
+    .then((order) => res.status(200).json(order))
+    .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
+};
+
+export { getOrders, getOrder, createOrder };

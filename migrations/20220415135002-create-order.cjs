@@ -6,10 +6,6 @@ export const up = async (queryInterface, Sequelize) => {
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    orderItemId: {
-      type: Sequelize.INTEGER,
-      references: { model: "OrderItems", key: "id" },
-    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

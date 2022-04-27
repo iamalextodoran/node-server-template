@@ -10,18 +10,11 @@ const OrderItem = (sequelize, DataTypes) => {
   OrderItem.init(
     {
       details: DataTypes.TEXT,
-      productId: {
-        type: DataTypes.INTEGER,
-        references: {
-          key: "id",
-          model: "Product",
-        },
-      },
     },
     {
+      timestamps: false,
       sequelize,
       modelName: "OrderItem",
-      timestamps: true,
     }
   );
 
