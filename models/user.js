@@ -4,10 +4,9 @@ import bcrypt from "bcrypt";
 
 const User = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(models) {
-      // define association here
-    }
+    static associate(models) {}
   }
+
   User.init(
     {
       firstName: DataTypes.STRING,

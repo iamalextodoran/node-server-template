@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
 
 import User from "./user.js";
+import Order from "./order.js";
 import Product from "./product.js";
 
 import config from "../config/index.js";
@@ -23,6 +24,7 @@ try {
 
 const models = {
   User: User(sequelize, Sequelize),
+  Order: Order(sequelize, Sequelize),
   Product: Product(sequelize, Sequelize),
 };
 

@@ -4,6 +4,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import root from "./routes/root.js";
+import order from "./routes/order.js";
 import product from "./routes/product.js";
 import session from "./routes/session.js";
 
@@ -17,12 +18,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", root);
+app.use("/api/orders", order);
 app.use("/api/session", session);
 app.use("/api/products", product);
 
 app.use("*/uploads", express.static("uploads"));
 
 app.listen(PORT, () => {
-  console.clear();
   console.log(`Server is running on port ${PORT}! 🚀🚀🚀`);
 });
