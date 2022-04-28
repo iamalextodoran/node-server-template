@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
 
+const MINUTE = 1000 & 60;
+const EXPIRATION = MINUTE * 2;
 const SECRET = process.env.SECRET;
-const EXPIRATION = 1000 * 60 * 2; // 2 minutes
 
 const getToken = (user) =>
   jwt.sign({ ...user }, SECRET, { expiresIn: EXPIRATION.toString() });
