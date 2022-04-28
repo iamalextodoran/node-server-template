@@ -20,11 +20,11 @@ export const up = async (queryInterface, Sequelize) => {
       type: Sequelize.ARRAY(Sequelize.TEXT),
     },
     pictures: {
-      default: [],
+      defaultValue: [],
       type: Sequelize.ARRAY(Sequelize.TEXT),
     },
     sizes: {
-      default: [],
+      defaultValue: [],
       type: Sequelize.ARRAY(Sequelize.TEXT),
     },
     createdAt: {

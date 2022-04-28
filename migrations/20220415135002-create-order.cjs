@@ -26,6 +26,10 @@ export const up = async (queryInterface, Sequelize) => {
       allowNull: false,
       type: Sequelize.TEXT,
     },
+    totalToPay: {
+      defaultValue: 0,
+      type: Sequelize.INTEGER,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

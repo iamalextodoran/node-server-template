@@ -17,6 +17,7 @@ const Order = (sequelize, DataTypes) => {
       lastName: DataTypes.STRING,
       address: DataTypes.TEXT,
       email: DataTypes.STRING,
+      totalToPay: DataTypes.INTEGER,
     },
     {
       sequelize,
