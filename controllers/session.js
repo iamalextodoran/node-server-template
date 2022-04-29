@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { createToken } from "../util.js";
+import { createToken, EXPIRATION } from "../util.js";
 import models from "../models/index.js";
 
 const User = models.User;
@@ -14,7 +14,12 @@ const logIn = (req, res) => {
         if (err) res.status(400).json({ err, msg: "Something's wrong!" });
 
         if (validPassword) {
-          return res.status(200).json({ user, token: createToken(user) });
+          return res.status(200).json({
+            user,
+            loggedInAt: new Date(),
+            token: createToken(user),
+            tokenAvailability: EXPIRATION,
+          });
         } else {
           return res.status(401).json({ msg: "Invalid credentials" });
         }

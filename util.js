@@ -1,13 +1,13 @@
 import jwt from "jsonwebtoken";
 
-const MINUTE = 1000 * 60;
-const EXPIRATION = MINUTE * 2;
+const ONE_MINUTE = 1000 * 60;
+const EXPIRATION = ONE_MINUTE * 10;
 const SECRET = process.env.SECRET;
 
 const createToken = (user) =>
-  jwt.sign({ ...user }, SECRET, { expiresIn: EXPIRATION });
+  jwt.sign({ ...user }, SECRET, { expiresIn: EXPIRATION.toString() });
 
-const isAuth = (req, res, next) => {
+const authorizeUser = (req, res, next) => {
   const token = req.headers.authorization;
 
   if (token) {
@@ -27,4 +27,4 @@ const isAuth = (req, res, next) => {
   }
 };
 
-export { createToken, isAuth };
+export { createToken, authorizeUser, EXPIRATION };
