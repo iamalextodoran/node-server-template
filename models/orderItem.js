@@ -12,9 +12,14 @@ const OrderItem = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      paranoid: true,
-      timestamps: false,
+      timestamps: true,
       modelName: "OrderItem",
+      hooks: {
+        beforeCreate: (record) => {
+          record.createdAt = new Date();
+          record.updatedAt = new Date();
+        },
+      },
     }
   );
 

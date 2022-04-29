@@ -30,6 +30,10 @@ export const up = async (queryInterface, Sequelize) => {
       defaultValue: 0,
       type: Sequelize.INTEGER,
     },
+    trackingId: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

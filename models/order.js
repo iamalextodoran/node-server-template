@@ -16,14 +16,21 @@ const Order = (sequelize, DataTypes) => {
       phoneNumber: DataTypes.STRING,
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
+      trackingId: DataTypes.STRING,
       address: DataTypes.TEXT,
       email: DataTypes.STRING,
     },
     {
       sequelize,
-      paranoid: true,
-      timestamps: false,
+      timestamps: true,
       modelName: "Order",
+      hooks: {
+        beforeCreate: (record) => {
+          record.trackingId = (Math.random() + 1).toString(36).substring(2);
+          record.createdAt = new Date();
+          record.updatedAt = new Date();
+        },
+      },
     }
   );
 
