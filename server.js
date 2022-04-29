@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", root);
+app.use("/api", root);
 app.use("/api/orders", order);
 app.use("/api/session", session);
 app.use("/api/products", product);

@@ -3,7 +3,7 @@ import models from "../models/index.js";
 const Product = models.Product;
 
 const createProduct = (req, res) => {
-  const { name, description, price, category, colors, sizes } = req.body;
+  const { name, description, price, colors, sizes } = req.body;
 
   const pictures = req.files.map(({ path }) => process.env.SERVER + path);
 
@@ -11,7 +11,6 @@ const createProduct = (req, res) => {
     name,
     description,
     price,
-    category,
     colors,
     sizes,
     pictures,

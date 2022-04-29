@@ -12,12 +12,12 @@ const Order = (sequelize, DataTypes) => {
 
   Order.init(
     {
+      totalToPay: DataTypes.INTEGER,
       phoneNumber: DataTypes.STRING,
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       address: DataTypes.TEXT,
       email: DataTypes.STRING,
-      totalToPay: DataTypes.INTEGER,
     },
     {
       sequelize,

@@ -1,18 +1,10 @@
 import models from "../models/index.js";
 
 const Order = models.Order;
-const Product = models.Product;
 const OrderItem = models.OrderItem;
 
 const getOrders = (req, res) => {
-  Order.findAll({
-    include: {
-      model: OrderItem,
-      include: {
-        model: Product,
-      },
-    },
-  })
+  Order.findAll({ include: OrderItem })
     .then((orders) => res.status(200).json(orders))
     .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };
@@ -20,11 +12,7 @@ const getOrders = (req, res) => {
 const getOrder = (req, res) => {
   const id = req.params.id;
 
-  OrderItem.findOne({
-    where: { id },
-    attributes: ["id"],
-    include: Product,
-  })
+  Order.findOne({ where: { id } })
     .then((order) => res.status(200).json(order))
     .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };

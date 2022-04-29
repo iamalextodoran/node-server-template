@@ -11,10 +11,8 @@ export const up = async (queryInterface, Sequelize) => {
       type: Sequelize.INTEGER,
       references: { model: "Orders", key: "id" },
     },
-    productId: {
-      allowNull: false,
-      type: Sequelize.INTEGER,
-      references: { model: "Products", key: "id" },
+    product: {
+      type: Sequelize.TEXT,
     },
     details: {
       allowNull: true,

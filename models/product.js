@@ -8,17 +8,22 @@ const Product = (sequelize, DataTypes) => {
   Product.init(
     {
       name: DataTypes.STRING,
-      description: DataTypes.STRING,
       price: DataTypes.INTEGER,
+      description: DataTypes.STRING,
+      sizes: DataTypes.ARRAY(DataTypes.TEXT),
       colors: DataTypes.ARRAY(DataTypes.TEXT),
       pictures: DataTypes.ARRAY(DataTypes.TEXT),
-      sizes: DataTypes.ARRAY(DataTypes.TEXT),
     },
     {
       sequelize,
-      paranoid: true,
-      timestamps: false,
+      timestamps: true,
       modelName: "Product",
+      hooks: {
+        beforeCreate: (record) => {
+          record.createdAt = new Date();
+          record.updatedAt = new Date();
+        },
+      },
     }
   );
 
