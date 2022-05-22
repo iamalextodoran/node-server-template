@@ -1,3 +1,5 @@
+import { Op } from "sequelize";
+
 import models from "../models/index.js";
 
 const Product = models.Product;
@@ -44,7 +46,16 @@ const updateProduct = (req, res) => {
 };
 
 const getProducts = (req, res) => {
-  Product.findAll()
+  const keywords = req.query.keywords;
+
+  Product.findAll({
+    where: {
+      [Op.or]: [
+        { name: { [Op.like]: `%${keywords}%` } },
+        { description: { [Op.like]: `%${keywords}%` } },
+      ],
+    },
+  })
     .then((products) => res.status(200).json(products))
     .catch((err) => res.status(400).json({ err, msg: "Something's wrong!" }));
 };
