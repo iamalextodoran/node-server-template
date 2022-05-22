@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "env-cmd -f .env nodemon server.js --trace-warnings",
-    "reset": "rm ./uploads/* && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "dev": "wrap () { npx sequelize-cli \"$*\" | cat; }; wrap"
   },
   "keywords": [],
